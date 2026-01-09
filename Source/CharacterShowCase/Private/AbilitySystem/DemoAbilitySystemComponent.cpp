@@ -11,7 +11,7 @@ void UDemoAbilitySystemComponent::OnAbilityInputPressed(const FGameplayTag& InIn
     for (const FGameplayAbilitySpec& AbilitySpec : GetActivatableAbilities())
     {
         // 어빌리티에 해당 입력 태그가 포함되어 있는지 확인
-        if (!AbilitySpec.DynamicAbilityTags.HasTagExact(InInputTag)) continue;
+        if (!AbilitySpec.GetDynamicSpecSourceTags().HasTagExact(InInputTag)) continue;
 
         TryActivateAbility(AbilitySpec.Handle);
     }

@@ -14,7 +14,9 @@ namespace DemoPlayerGameplayTag
     UE_DEFINE_GAMEPLAY_TAG(InputTag_Skill_2, "InputTag.Skill.2");
     UE_DEFINE_GAMEPLAY_TAG(InputTag_Skill_3, "InputTag.Skill.3");
     UE_DEFINE_GAMEPLAY_TAG(InputTag_Skill_4, "InputTag.Skill.4");
+    UE_DEFINE_GAMEPLAY_TAG(InputTag_TestEquip, "InputTag.TestEquip");
 
+    
     // 어빌리티 태그
     UE_DEFINE_GAMEPLAY_TAG(Player_Combat_Attack, "Player.Combat.Attack");
     UE_DEFINE_GAMEPLAY_TAG(Player_Combat_Dash, "Player.Combat.Dash");

@@ -22,7 +22,7 @@ void UDataAsset_DemoPlayerStartUpData::GiveToAbilitySystemComponent(UDemoAbility
         FGameplayAbilitySpec AbilitySpec(AbilitySet.AbilityToGrant);
         AbilitySpec.SourceObject = InASCToGive->GetOwnerActor();
         AbilitySpec.Level = ApplyLevel;
-        AbilitySpec.DynamicAbilityTags.AddTag(AbilitySet.InputTag);
+        AbilitySpec.GetDynamicSpecSourceTags().AddTag(AbilitySet.InputTag);
 
         InASCToGive->GiveAbility(AbilitySpec);
     }

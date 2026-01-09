@@ -2,6 +2,7 @@
 
 
 #include "Item/Weapons/DemoWeaponBase.h"
+#include "AbilitySystem/Abilities/DemoGameplayAbility.h"
 
 // Sets default values
 ADemoWeaponBase::ADemoWeaponBase()
