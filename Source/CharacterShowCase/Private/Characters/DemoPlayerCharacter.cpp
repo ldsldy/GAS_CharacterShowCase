@@ -52,6 +52,7 @@ void ADemoPlayerCharacter::PossessedBy(AController* NewController)
     {
         if(UDataAsset_StartUpDataBase* LoadedData = CharacterStartUpData.LoadSynchronous())
         {
+            // 이 캐릭터의 어빌리티 시스템 컴포넌트에 스타트업 데이터의 어빌리티 부여
             LoadedData->GiveToAbilitySystemComponent(DemoAbilitySystemComponent);
         }
     }
@@ -74,6 +75,8 @@ void ADemoPlayerCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInpu
     DemoPlayerInputComponent->BindNativeInputAction(InputConfigDataAsset, DemoPlayerGameplayTag::InputTag_Move, ETriggerEvent::Triggered, this, &ThisClass::Input_Move);
     DemoPlayerInputComponent->BindNativeInputAction(InputConfigDataAsset, DemoPlayerGameplayTag::InputTag_Look, ETriggerEvent::Triggered, this, &ThisClass::Input_Look);
 
+    // 스킬1,2,3,4와 대시 입력 액션을 바인딩
+    // 초기에는 UDataAsset_StartUpDataBase에서 부여한 어빌리티와 연동(GameplayTag InputTag로 연결)
     DemoPlayerInputComponent->BindAbilityInputAction(InputConfigDataAsset, this, &ThisClass::Input_AbilityInputPressed, &ThisClass::Input_AbilityInputReleased);
 }
 
@@ -112,7 +115,7 @@ void ADemoPlayerCharacter::Input_Look(const FInputActionValue& InputActionValue)
 
     if (LookAxisVector.Y != 0.f)
     {
-        AddControllerPitchInput(-LookAxisVector.Y);
+        AddControllerPitchInput(LookAxisVector.Y);
     }
 }
 
@@ -123,5 +126,5 @@ void ADemoPlayerCharacter::Input_AbilityInputPressed(FGameplayTag InInputTag)
 
 void ADemoPlayerCharacter::Input_AbilityInputReleased(FGameplayTag InInputTag)
 {
-    DemoAbilitySystemComponent->OnAbilityInputPressed(InInputTag);
+    DemoAbilitySystemComponent->OnAbilityInputReleased(InInputTag);
 }

@@ -47,6 +47,7 @@ inline void UPlayerInputComponent::BindAbilityInputAction(const UDataAsset_Input
     {
         if (!AbilityInputActionConfig.IsValid()) continue;
 
+        // InputConfig에서 어빌리티 인풋액션을 찾아 함수와 바인딩(인풋 태그도 함수에 Parameter로 전달됨)
         BindAction(AbilityInputActionConfig.InputAction, ETriggerEvent::Started, ContextObject, InputPressedFunc, AbilityInputActionConfig.InputTag);
         BindAction(AbilityInputActionConfig.InputAction, ETriggerEvent::Completed, ContextObject, InputReleasedFunc, AbilityInputActionConfig.InputTag);
     }

@@ -6,6 +6,11 @@
 #include "Components/Combat/PawnCombatComponent.h"
 
 
+UDemoGameplayAbility::UDemoGameplayAbility()
+{
+    InstancingPolicy = EGameplayAbilityInstancingPolicy::InstancedPerActor;
+}
+
 void UDemoGameplayAbility::OnGiveAbility(const FGameplayAbilityActorInfo* ActorInfo, const FGameplayAbilitySpec& Spec)
 {
     Super::OnGiveAbility(ActorInfo, Spec);

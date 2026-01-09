@@ -9,7 +9,7 @@
 class UDemoAbilitySystemComponent;
 class UDemoGameplayAbility;
 /**
- * 
+ *  시작시에 어빌리티를 어빌리티 컴포넌트에 부여하는 데이터 에셋의 기본 클래스
  */
 UCLASS()
 class CHARACTERSHOWCASE_API UDataAsset_StartUpDataBase : public UDataAsset
