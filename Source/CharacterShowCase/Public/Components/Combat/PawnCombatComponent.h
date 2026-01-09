@@ -5,7 +5,6 @@
 #include "CoreMinimal.h"
 #include "Components/PawnExtensionComponentBase.h"
 #include "GameplayTagContainer.h"
-#include "DataAssets/Weapon/DataAsset_WeaponData.h"
 #include "PawnCombatComponent.generated.h"
 
 class ADemoWeaponBase;
@@ -18,12 +17,22 @@ class CHARACTERSHOWCASE_API UPawnCombatComponent : public UPawnExtensionComponen
 	GENERATED_BODY()
 	
 public:
-    UFUNCTION(BlueprintCallable, Category = "Demo|Combat")
-    void SetCharacterEquippedWeaponData(UDataAsset_WeaponData* NewEquippedWeaponData);
+    // 캐릭터가 스폰 가능할 무기 등록
+    UFUNCTION(BlueprintCallable, Category = "Warrior|Combat")
+    void RegisterSpawnedWeapon(FGameplayTag InWeaponTagToRegister, ADemoWeaponBase* InWeaponToRegister, bool bRegisterAsEquippedWeapon = false);
 
-    UFUNCTION(BlueprintCallable, Category = "Demo|Combat")
-    ADemoWeaponBase* GetCharacterEquippedWeapon() const;
+    // 무기 태그로 캐릭터가 휴대한 무기 가져오기
+    UFUNCTION(BlueprintCallable, Category = "Warrior|Combat")
+    ADemoWeaponBase* GetCharacterCarriedWeaponByTag(FGameplayTag InWeaponTagToGet) const;
+
+    // 캐릭터가 현재 장착한 무기 가져오기
+    UFUNCTION(BlueprintCallable, Category = "Warrior|Combat")
+    ADemoWeaponBase* GetCharacterCurrentEquippedWeapon() const;
+public:
+    // 현재 장착된 무기 태그
+    UPROPERTY(BlueprintReadWrite, Category = "Warrior|Combat")
+    FGameplayTag CurrentEquippedWeaponTag;
 
 private:
-    TSoftObjectPtr<UDataAsset_WeaponData> EquippedWeaponData;
+    TMap<FGameplayTag, ADemoWeaponBase*> CharacterCarriedWeaponMap;
 };

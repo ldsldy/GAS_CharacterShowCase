@@ -36,7 +36,7 @@ public:
 
     // 무기 액터 클래스
     UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "WeaponActor")
-    TObjectPtr<class ADemoWeaponBase> WeaponActorClass;
+    TSubclassOf<class ADemoWeaponBase> WeaponActorClass;
 
     // 무기 능력 세트
     UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "WeaponAbility")

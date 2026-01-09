@@ -2,21 +2,46 @@
 
 
 #include "Components/Combat/PawnCombatComponent.h"
+#include "Item/Weapons/DemoWeaponBase.h"
 
-void UPawnCombatComponent::SetCharacterEquippedWeaponData(UDataAsset_WeaponData* NewEquippedWeaponData)
+void UPawnCombatComponent::RegisterSpawnedWeapon(FGameplayTag InWeaponTagToRegister, ADemoWeaponBase* InWeaponToRegister, bool bRegisterAsEquippedWeapon)
 {
-    if (!NewEquippedWeaponData) return;
+    // 이미 등록된 태그가 아닌지 확인
+    checkf(!CharacterCarriedWeaponMap.Contains(InWeaponTagToRegister), TEXT("A named named '%s' is already registered in CharacterCarriedWeaponMap"), *InWeaponTagToRegister.ToString());
+    // 무기가 유효한지 확인
+    check(InWeaponToRegister);
 
-    if(NewEquippedWeaponData == EquippedWeaponData.Get()) return;
+    // 무기 등록
+    CharacterCarriedWeaponMap.Emplace(InWeaponTagToRegister, InWeaponToRegister);
 
-    EquippedWeaponData = NewEquippedWeaponData;
+    // 무기 등록이 사실이라면
+    if (bRegisterAsEquippedWeapon)
+    {
+        CurrentEquippedWeaponTag = InWeaponTagToRegister;
+    }
 }
 
-ADemoWeaponBase* UPawnCombatComponent::GetCharacterEquippedWeapon() const
+ADemoWeaponBase* UPawnCombatComponent::GetCharacterCarriedWeaponByTag(FGameplayTag InWeaponTagToGet) const
 {
-    if (!EquippedWeaponData.IsValid())
+    // 캐릭터가 휴대한 무기에 해당 태그가 있는지 확인
+    if (CharacterCarriedWeaponMap.Contains(InWeaponTagToGet))
+    {
+        if (ADemoWeaponBase* const* FoundWeapon = CharacterCarriedWeaponMap.Find(InWeaponTagToGet))
+        {
+            return *FoundWeapon;
+        }
+    }
+
+    return nullptr;
+}
+
+ADemoWeaponBase* UPawnCombatComponent::GetCharacterCurrentEquippedWeapon() const
+{
+    // 현재 장착된 무기 태그가 유효한지 확인
+    if (!CurrentEquippedWeaponTag.IsValid())
     {
         return nullptr;
     }
-    return EquippedWeaponData.Get()->WeaponActorClass;
+
+    return GetCharacterCarriedWeaponByTag(CurrentEquippedWeaponTag);
 }
