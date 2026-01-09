@@ -12,8 +12,9 @@ class UCameraComponent;
 class UDataAsset_InputConfig;
 class UDemoPlayerCombatComponent;
 struct FInputActionValue;
+
 /**
- * 
+ *   블루프린트에서 어빌리티를 사용함에 있어서 도움을 주는 헬퍼 함수들을 포함한 클래스
  */
 UCLASS()
 class CHARACTERSHOWCASE_API ADemoPlayerCharacter : public ADemoCharacterBase

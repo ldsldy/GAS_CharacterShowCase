@@ -6,14 +6,14 @@
 namespace DemoPlayerGameplayTag
 {
     // 인풋 액션 태그
-    UE_DEFINE_GAMEPLAY_TAG(InputTag_Move, "Input.Action.Move");
-    UE_DEFINE_GAMEPLAY_TAG(InputTag_Look, "Input.Action.Look");
-    UE_DEFINE_GAMEPLAY_TAG(InputTag_Interact, "Input.Action.Interact");
-    UE_DEFINE_GAMEPLAY_TAG(InputTag_Dash, "Input.Action.Dash");
-    UE_DEFINE_GAMEPLAY_TAG(InputTag_Skill_1, "Input.Action.Skill.1");
-    UE_DEFINE_GAMEPLAY_TAG(InputTag_Skill_2, "Input.Action.Skill.2");
-    UE_DEFINE_GAMEPLAY_TAG(InputTag_Skill_3, "Input.Action.Skill.3");
-    UE_DEFINE_GAMEPLAY_TAG(InputTag_Skill_4, "Input.Action.Skill.4");
+    UE_DEFINE_GAMEPLAY_TAG(InputTag_Move, "InputTag.Move");
+    UE_DEFINE_GAMEPLAY_TAG(InputTag_Look, "InputTag.Look");
+    UE_DEFINE_GAMEPLAY_TAG(InputTag_Interact, "InputTag.Interact");
+    UE_DEFINE_GAMEPLAY_TAG(InputTag_Dash, "InputTag.Dash");
+    UE_DEFINE_GAMEPLAY_TAG(InputTag_Skill_1, "InputTag.Skill.1");
+    UE_DEFINE_GAMEPLAY_TAG(InputTag_Skill_2, "InputTag.Skill.2");
+    UE_DEFINE_GAMEPLAY_TAG(InputTag_Skill_3, "InputTag.Skill.3");
+    UE_DEFINE_GAMEPLAY_TAG(InputTag_Skill_4, "InputTag.Skill.4");
 
     // 어빌리티 태그
     UE_DEFINE_GAMEPLAY_TAG(Player_Combat_Attack, "Player.Combat.Attack");
@@ -22,6 +22,7 @@ namespace DemoPlayerGameplayTag
 
     // 플레이어 무기 태그
     UE_DEFINE_GAMEPLAY_TAG(Player_Weapon_DimesionStaff, "Player.Weapon.DimesionStaff");
+    UE_DEFINE_GAMEPLAY_TAG(Player_Weapon_FireStaff, "Player.Weapon.FireStaff");
     UE_DEFINE_GAMEPLAY_TAG(Player_Weapon_Axe, "Player.Weapon.Axe");
 
     // 이벤트 트리거 태그

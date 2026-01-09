@@ -27,6 +27,7 @@ namespace DemoPlayerGameplayTag
 
     // 플레이어 무기 태그
     CHARACTERSHOWCASE_API UE_DECLARE_GAMEPLAY_TAG_EXTERN(Player_Weapon_DimesionStaff);
+    CHARACTERSHOWCASE_API UE_DECLARE_GAMEPLAY_TAG_EXTERN(Player_Weapon_FireStaff);
     CHARACTERSHOWCASE_API UE_DECLARE_GAMEPLAY_TAG_EXTERN(Player_Weapon_Axe);
 
     // 이벤트 트리거 태그
